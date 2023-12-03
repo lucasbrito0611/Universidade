@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+# Ignorar pasta do venv
+[Ss]treamlit/
 __pycache__/
 *.py[cod]
 *$py.class
