@@ -31,7 +31,7 @@ class ManterAlunoUI:
         nome = st.text_input('Informe o novo nome') 
         matricula = st.text_input('Informe a nova matrícula')
         email = st.text_input('Informe o novo e-mail')
-        fone = st.text_input('Informe o novo fone') 
+        telefone = st.text_input('Informe o novo telefone') 
         senha = st.text_input('Informe a nova senha')
         idCurso = st.selectbox('Selecione o novo curso', [])
 
