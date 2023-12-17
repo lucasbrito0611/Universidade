@@ -58,7 +58,7 @@ class NDepartamento:
         if aux is not None:
             aux.Set_Nome(obj.Get_Nome())
             aux.Set_Descricao(obj.Get_Descricao())
-            aux.Set_idUniversidade(obj.Get_idUniversidade())
+            aux.Set_IdUniversidade(obj.Get_IdUniversidade())
             cls.salvar()
 
     @classmethod
@@ -76,10 +76,10 @@ class NDepartamento:
             with open('departamentos.json', mode='r') as arquivo:
                 departamentos_json = json.load(arquivo)
                 for obj in departamentos_json:
-                    aux = Departamento(obj['Id'], 
-                            obj['Nome'], 
-                            obj['Descrição'],
-                            obj['idUniversidade'])
+                    aux = Departamento(obj['_Departamento__id'], 
+                            obj['_Departamento__nome'], 
+                            obj['_Departamento__descricao'],
+                            obj['_Departamento__idUniversidade'])
                     cls.__departamentos.append(aux)
         except FileNotFoundError:
             pass

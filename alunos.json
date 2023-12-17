@@ -1,0 +1,65 @@
+[
+  {
+    "_Aluno__id": 2,
+    "_Aluno__nome": "Lucas Brito",
+    "_Aluno__matricula": 20221011110021,
+    "_Aluno__email": "lucas@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 3
+  },
+  {
+    "_Aluno__id": 3,
+    "_Aluno__nome": "Pedro Edi",
+    "_Aluno__matricula": 20221011110008,
+    "_Aluno__email": "pedro@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 3
+  },
+  {
+    "_Aluno__id": 4,
+    "_Aluno__nome": "Joaquim",
+    "_Aluno__matricula": 20221022220009,
+    "_Aluno__email": "joaquim@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 2
+  },
+  {
+    "_Aluno__id": 5,
+    "_Aluno__nome": "Marcos",
+    "_Aluno__matricula": 202210333330001,
+    "_Aluno__email": "marcos@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 1
+  },
+  {
+    "_Aluno__id": 6,
+    "_Aluno__nome": "Jo\u00e3o Paulo",
+    "_Aluno__matricula": 20221022220900,
+    "_Aluno__email": "jp@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 2
+  },
+  {
+    "_Aluno__id": 7,
+    "_Aluno__nome": "Leticia",
+    "_Aluno__matricula": 20221033330890,
+    "_Aluno__email": "leticia@gmail.com",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 1
+  },
+  {
+    "_Aluno__id": 8,
+    "_Aluno__nome": "admin",
+    "_Aluno__matricula": "admin",
+    "_Aluno__email": "@",
+    "_Aluno__telefone": "9999999",
+    "_Aluno__senha": "1234",
+    "_Aluno__idCurso": 0
+  }
+]

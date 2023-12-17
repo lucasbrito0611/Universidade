@@ -76,10 +76,10 @@ class NUniversidade:
             with open('universidades.json', mode='r') as arquivo:
                 universidades_json = json.load(arquivo)
                 for obj in universidades_json:
-                    aux = Universidade(obj['Id'], 
-                            obj['Nome'], 
-                            obj['Localização'],
-                            obj['Descrição'])
+                    aux = Universidade(obj['_Universidade__id'], 
+                            obj['_Universidade__nome'], 
+                            obj['_Universidade__localizacao'],
+                            obj['_Universidade__descricao'])
                     cls.__universidades.append(aux)
         except FileNotFoundError:
             pass

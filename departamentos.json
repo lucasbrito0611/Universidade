@@ -1,0 +1,38 @@
+[
+  {
+    "_Departamento__id": 1,
+    "_Departamento__nome": "DIATINF",
+    "_Departamento__descricao": "Diretoria voltada para o meio da tecnologia.",
+    "_Departamento__idUniversidade": 1
+  },
+  {
+    "_Departamento__id": 2,
+    "_Departamento__nome": "DIATEC",
+    "_Departamento__descricao": "Diretoria voltada para a parte de tecnologias emergentes",
+    "_Departamento__idUniversidade": 3
+  },
+  {
+    "_Departamento__id": 3,
+    "_Departamento__nome": "DIAREN",
+    "_Departamento__descricao": "Diretoria voltada para a parte de explora\u00e7\u00e3o e prote\u00e7\u00e3o de recursos naturais.",
+    "_Departamento__idUniversidade": 1
+  },
+  {
+    "_Departamento__id": 4,
+    "_Departamento__nome": "DIAESP",
+    "_Departamento__descricao": "Diretoria voltada para a parte de esportes e lazer.",
+    "_Departamento__idUniversidade": 2
+  },
+  {
+    "_Departamento__id": 5,
+    "_Departamento__nome": "DIACUL",
+    "_Departamento__descricao": "Diretoria voltada para a parte de artes e cultura",
+    "_Departamento__idUniversidade": 2
+  },
+  {
+    "_Departamento__id": 6,
+    "_Departamento__nome": "DIAHEAL",
+    "_Departamento__descricao": "Diretoria voltada para a parte de sa\u00fade.",
+    "_Departamento__idUniversidade": 3
+  }
+]

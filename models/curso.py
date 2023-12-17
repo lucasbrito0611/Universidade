@@ -79,18 +79,32 @@ class NCurso:
             cls.salvar()
 
     @classmethod
+    def ver_codigo_ins(cls, codigo):
+        for curso in cls.__cursos:
+            if codigo == curso.Get_Codigo():
+                return False
+        return True
+    
+    @classmethod
+    def ver_codigo_att(cls, id, codigo):
+        for curso in cls.__cursos:
+            if codigo == curso.Get_Codigo() and id != curso.Get_Id():
+                return False
+        return True
+
+    @classmethod
     def abrir(cls):
         cls.__cursos = []
         try:
             with open('cursos.json', mode='r') as arquivo:
                 cursos_json = json.load(arquivo)
                 for obj in cursos_json:
-                    aux = Curso(obj['Id'], 
-                            obj['Nome'], 
-                            obj['Descrição'],
-                            obj['Código'],
-                            obj['Carga Horária'],
-                            obj['idDepartamento'])
+                    aux = Curso(obj['_Curso__id'], 
+                                obj['_Curso__nome'], 
+                                obj['_Curso__descricao'],
+                                obj['_Curso__codigo'],
+                                obj['_Curso__cargahoraria'],
+                                obj['_Curso__idDepartamento'])
                     cls.__cursos.append(aux)
         except FileNotFoundError:
             pass

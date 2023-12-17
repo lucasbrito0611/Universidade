@@ -1,0 +1,26 @@
+[
+  {
+    "_Curso__id": 1,
+    "_Curso__nome": "Controle Ambiental",
+    "_Curso__descricao": "Curso com foco no meio-ambiente.",
+    "_Curso__codigo": 1111,
+    "_Curso__cargahoraria": 1000,
+    "_Curso__idDepartamento": 3
+  },
+  {
+    "_Curso__id": 2,
+    "_Curso__nome": "Educa\u00e7\u00e3o F\u00edsica",
+    "_Curso__descricao": "Curso com foco no corpo humano e lazer.",
+    "_Curso__codigo": 2222,
+    "_Curso__cargahoraria": 1000,
+    "_Curso__idDepartamento": 4
+  },
+  {
+    "_Curso__id": 3,
+    "_Curso__nome": "Inform\u00e1tica para Internet",
+    "_Curso__descricao": "Curso com foco no desenvolvimento de sites e aplicativos com programa\u00e7\u00e3o.",
+    "_Curso__codigo": 3333,
+    "_Curso__cargahoraria": 1000,
+    "_Curso__idDepartamento": 1
+  }
+]

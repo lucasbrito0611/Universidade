@@ -82,19 +82,33 @@ class NAluno:
             cls.salvar()
 
     @classmethod
+    def ver_matricula_ins(cls, matricula):
+        for aluno in cls.__alunos:
+            if matricula == aluno.Get_Matricula():
+                return False
+        return True
+    
+    @classmethod
+    def ver_matricula_att(cls, id, matricula):
+        for aluno in cls.__alunos:
+            if matricula == aluno.Get_Matricula() and id != aluno.Get_Id():
+                return False
+        return True
+
+    @classmethod
     def abrir(cls):
         cls.__alunos = []
         try:
             with open('alunos.json', mode='r') as arquivo:
                 alunos_json = json.load(arquivo)
                 for obj in alunos_json:
-                    aux = Aluno(obj['Id'], 
-                            obj['Nome'], 
-                            obj['Matrícula'],
-                            obj['E-mail'],
-                            obj['Telefone'],
-                            obj['Senha'],
-                            obj['idCurso'])
+                    aux = Aluno(obj['_Aluno__id'], 
+                                obj['_Aluno__nome'], 
+                                obj['_Aluno__matricula'],
+                                obj['_Aluno__email'],
+                                obj['_Aluno__telefone'],
+                                obj['_Aluno__senha'],
+                                obj['_Aluno__idCurso'])
                     cls.__alunos.append(aux)
         except FileNotFoundError:
             pass

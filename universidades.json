@@ -1,0 +1,20 @@
+[
+  {
+    "_Universidade__id": 1,
+    "_Universidade__nome": "IFRN",
+    "_Universidade__localizacao": "Avenida Senador Salgado Filho, 1559",
+    "_Universidade__descricao": "Instituto Federal do Rio Grande do Norte com cursos no integrado, subsequente e superior. "
+  },
+  {
+    "_Universidade__id": 2,
+    "_Universidade__nome": "UFRN",
+    "_Universidade__localizacao": "Campus Universit\u00e1rio",
+    "_Universidade__descricao": "Universidade Federal do Rio Grande do Norte com muitos cursos do superior."
+  },
+  {
+    "_Universidade__id": 3,
+    "_Universidade__nome": "IFPB",
+    "_Universidade__localizacao": "Avenida Pinheirinho da Ro\u00e7a, 8976",
+    "_Universidade__descricao": "Instituto Federal da Para\u00edba, ofertando cursos de integrado, subsequente e superior."
+  }
+]
