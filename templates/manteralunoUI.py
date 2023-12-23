@@ -48,10 +48,15 @@ class ManterAlunoUI:
         idCurso = st.selectbox('Selecione o curso', View.Curso_Listar())
 
         if st.button('Inserir'):
-            View.Aluno_Inserir(nome, int(matricula), email, telefone, senha, idCurso.Get_Id())
-            st.success('Aluno inserido com sucesso!')
-            time.sleep(1)
-            st.rerun()
+            try:
+                View.Aluno_Inserir(nome, int(matricula), email, telefone, senha, idCurso.Get_Id())
+                st.success('Aluno inserido com sucesso!')
+                time.sleep(1)
+                st.rerun()
+            except ValueError as erro:
+                st.error(erro)
+                time.sleep(2)
+                st.rerun()
     
     def Atualizar():
         alunos = View.Aluno_Listar()
@@ -68,10 +73,15 @@ class ManterAlunoUI:
             idCurso = st.selectbox('Selecione o novo curso', View.Curso_Listar())
 
             if st.button('Atualizar'):
-                View.Aluno_Atualizar(id, nome, int(matricula), email, telefone, senha, idCurso.Get_Id())
-                st.success('Aluno atualizado com sucesso!')
-                time.sleep(1)
-                st.rerun()
+                try:
+                    View.Aluno_Atualizar(id, nome, int(matricula), email, telefone, senha, idCurso.Get_Id())
+                    st.success('Aluno atualizado com sucesso!')
+                    time.sleep(1)
+                    st.rerun()
+                except ValueError as erro:
+                    st.error(erro)
+                    time.sleep(2)
+                    st.rerun()
 
     def Excluir():
         alunos = View.Aluno_Listar()

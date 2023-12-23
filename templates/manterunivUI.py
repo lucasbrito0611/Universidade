@@ -29,10 +29,15 @@ class ManterUnivUI:
         descricao = st.text_input('Digite uma descrição')
 
         if st.button('Inserir'):
-            View.Univ_Inserir(nome, localizacao, descricao)
-            st.success('Universidade inserida com sucesso!')
-            time.sleep(1)
-            st.rerun()
+            try:
+                View.Univ_Inserir(nome, localizacao, descricao)
+                st.success('Universidade inserida com sucesso!')
+                time.sleep(1)
+                st.rerun()
+            except ValueError as erro:
+                st.error(erro)
+                time.sleep(2)
+                st.rerun()
     
     def Atualizar():
         universidades = View.Univ_Listar()
@@ -46,10 +51,15 @@ class ManterUnivUI:
             descricao = st.text_input('Digite uma nova descrição', op.Get_Descricao())
 
             if st.button('Atualizar'):
-                View.Univ_Atualizar(id, nome, localizacao, descricao)
-                st.success('Universidade atualizada com sucesso!')
-                time.sleep(1)
-                st.rerun()
+                try:
+                    View.Univ_Atualizar(id, nome, localizacao, descricao)
+                    st.success('Universidade atualizada com sucesso!')
+                    time.sleep(1)
+                    st.rerun()
+                except ValueError as erro:
+                    st.error(erro)
+                    time.sleep(2)
+                    st.rerun()
 
     def Excluir():
         universidades = View.Univ_Listar()

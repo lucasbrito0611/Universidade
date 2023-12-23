@@ -11,11 +11,17 @@ class View:
         return NAluno.listar_id()
 
     def Aluno_Inserir(nome, matricula, email, telefone, senha, idCurso):
+        if nome == '' or email == '' or telefone == '' or senha == '' or idCurso == '': raise ValueError('Preencha os valores vazios!')
+        if matricula <=0: raise ValueError('A matrícula deve ser maior que 0!')
         if NAluno.ver_matricula_ins(matricula) == False: raise ValueError('Matrícula já cadastrada!')
+        
         NAluno.inserir(Aluno(0, nome, matricula, email, telefone, senha, idCurso))
     
     def Aluno_Atualizar(id, nome, matricula, email, telefone, senha, idCurso):
+        if nome == '' or matricula == '' or email == '' or telefone == '' or senha == '' or idCurso == '': raise ValueError('Preencha os valores vazios!')
+        if matricula <=0: raise ValueError('A matrícula deve ser maior que 0!')
         if NAluno.ver_matricula_att(id, matricula) == False: raise ValueError('Matrícula já cadastrada!')
+
         NAluno.atualizar(Aluno(id, nome, matricula, email, telefone, senha, idCurso))
 
     def Aluno_Excluir(id):
@@ -44,9 +50,13 @@ class View:
         return NUniversidade.listar_id()
     
     def Univ_Inserir(nome, localizacao, descricao):
+        if nome == '' or localizacao == '' or descricao == '': raise ValueError('Preencha os valores vazios!')
+
         NUniversidade.inserir(Universidade(0, nome, localizacao, descricao))
 
     def Univ_Atualizar(id, nome, localizacao, descricao):
+        if nome == '' or localizacao == '' or descricao == '': raise ValueError('Preencha os valores vazios!')
+
         NUniversidade.atualizar(Universidade(id, nome, localizacao, descricao))
 
     def Univ_Excluir(id):
@@ -66,9 +76,13 @@ class View:
         return NDepartamento.listar_id()
     
     def Depart_Inserir(nome, descricao, idUniversidade):
+        if nome == '' or descricao == '' or idUniversidade == '': raise ValueError('Preencha os valores vazios!')
+
         NDepartamento.inserir(Departamento(0, nome, descricao, idUniversidade))
 
     def Depart_Atualizar(id, nome, descricao, idUniversidade):
+        if nome == '' or descricao == '' or idUniversidade == '': raise ValueError('Preencha os valores vazios!')
+
         NDepartamento.atualizar(Departamento(id, nome, descricao, idUniversidade))
 
     def Depart_Excluir(id):
@@ -88,11 +102,19 @@ class View:
         return NCurso.listar_id()
     
     def Curso_Inserir(nome, descricao, codigo, cargahoraria, idDepartamento):
+        if nome == '' or descricao == '' or idDepartamento == '': raise ValueError('Preencha os valores vazios!')
+        if codigo <= 0: raise ValueError('O código deve ser maior que 0!')
+        if cargahoraria <= 0: raise ValueError('A carga horária deve ser maior que 0!')
         if NCurso.ver_codigo_ins(codigo) == False: raise ValueError('Código já cadastrado!')
+
         NCurso.inserir(Curso(0, nome, descricao, codigo, cargahoraria, idDepartamento))
 
     def Curso_Atualizar(id, nome, descricao, codigo, cargahoraria, idDepartamento):
+        if nome == '' or descricao == '' or idDepartamento == '': raise ValueError('Preencha os valores vazios!')
+        if codigo <= 0: raise ValueError('O código deve ser maior que 0!')
+        if cargahoraria <= 0: raise ValueError('A carga horária deve ser maior que 0!')
         if NCurso.ver_codigo_att(id, codigo) == False: raise ValueError('Código já cadastrado!')
+
         NCurso.atualizar(Curso(id, nome, descricao, codigo, cargahoraria, idDepartamento))
 
     def Curso_Excluir(id):

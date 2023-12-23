@@ -46,10 +46,15 @@ class ManterCursoUI:
         idDepartamento = st.selectbox('Selecione o departamento', View.Depart_Listar())
 
         if st.button('Inserir'):
-            View.Curso_Inserir(nome, descricao, int(codigo), int(cargahoraria), idDepartamento.Get_Id())
-            st.success('Curso cadastrado com sucesso!')
-            time.sleep(1)
-            st.rerun()
+            try:
+                View.Curso_Inserir(nome, descricao, int(codigo), int(cargahoraria), idDepartamento.Get_Id())
+                st.success('Curso cadastrado com sucesso!')
+                time.sleep(1)
+                st.rerun()
+            except ValueError as erro:
+                st.error(erro)
+                time.sleep(2)
+                st.rerun()
     
     def Atualizar():
         cursos = View.Curso_Listar()
@@ -65,10 +70,15 @@ class ManterCursoUI:
             idDepartamento = st.selectbox('Selecione o novo departamento', View.Depart_Listar())
 
             if st.button('Atualizar'):
-                View.Curso_Atualizar(id, nome, descricao, int(codigo), int(cargahoraria), idDepartamento.Get_Id())
-                st.success('Curso atualizado com sucesso!')
-                time.sleep(1)
-                st.rerun()
+                try:
+                    View.Curso_Atualizar(id, nome, descricao, int(codigo), int(cargahoraria), idDepartamento.Get_Id())
+                    st.success('Curso atualizado com sucesso!')
+                    time.sleep(1)
+                    st.rerun()
+                except ValueError as erro:
+                    st.error(erro)
+                    time.sleep(2)
+                    st.rerun()
 
     def Excluir():
         cursos = View.Curso_Listar()

@@ -42,10 +42,15 @@ class ManterDepartUI:
         idUniversidade = st.selectbox('Selecione a universidade', View.Univ_Listar())
 
         if st.button('Inserir'):
-            View.Depart_Inserir(nome, descricao, idUniversidade.Get_Id())
-            st.success('Departamento inserido com sucesso!')
-            time.sleep(1)
-            st.rerun()
+            try:
+                View.Depart_Inserir(nome, descricao, idUniversidade.Get_Id())
+                st.success('Departamento inserido com sucesso!')
+                time.sleep(1)
+                st.rerun()
+            except ValueError as erro:
+                st.error(erro)
+                time.sleep(2)
+                st.rerun()
     
     def Atualizar():
         departamentos = View.Depart_Listar()
@@ -59,10 +64,16 @@ class ManterDepartUI:
             idUniversidade = st.selectbox('Selecione a nova universidade', View.Univ_Listar())
 
             if st.button('Atualizar'):
-                View.Depart_Atualizar(id, nome, descricao, idUniversidade.Get_Id())
-                st.success('Departamento atualizado com sucesso!')
-                time.sleep(1)
-                st.rerun()
+                try:
+                    View.Depart_Atualizar(id, nome, descricao, idUniversidade.Get_Id())
+                    st.success('Departamento atualizado com sucesso!')
+                    time.sleep(1)
+                    st.rerun()
+                except ValueError as erro:
+                    st.error(erro)
+                    time.sleep(2)
+                    st.rerun()
+                
 
     def Excluir():
         departamentos = View.Depart_Listar()
