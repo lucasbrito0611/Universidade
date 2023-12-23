@@ -1,4 +1,5 @@
 import json
+from models.modelo import Modelo
 
 class Aluno:
     def __init__(self, id, nome, matricula, email, telefone, senha, idCurso):
@@ -34,70 +35,24 @@ class Aluno:
     def __str__(self):
         return f'{self.__id} - {self.__nome} - {self.__matricula} - {self.__email} - {self.__telefone} - {self.__senha} - {self.__idCurso}'
     
-class NAluno:
-    __alunos = []
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        id = 0
-        for aluno in cls.__alunos:
-            if aluno.Get_Id() > id: id = aluno.Get_Id()
-        
-        obj.Set_Id(id + 1)
-        cls.__alunos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.__alunos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        for aluno in cls.__alunos:
-            if aluno.Get_Id() == id: return aluno
-        return None
-    
-    @classmethod
-    def atualizar(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            aux.Set_Nome(obj.Get_Nome())
-            aux.Set_Matricula(obj.Get_Matricula())
-            aux.Set_Email(obj.Get_Email())
-            aux.Set_Telefone(obj.Get_Telefone())
-            aux.Set_Senha(obj.Get_Senha())
-            aux.Set_IdCurso(obj.Get_IdCurso())
-            cls.salvar()
-
-    @classmethod
-    def excluir(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            cls.__alunos.remove(aux)
-            cls.salvar()
-
+class NAluno(Modelo):
     @classmethod
     def ver_matricula_ins(cls, matricula):
-        for aluno in cls.__alunos:
+        for aluno in cls.objetos:
             if matricula == aluno.Get_Matricula():
                 return False
         return True
     
     @classmethod
     def ver_matricula_att(cls, id, matricula):
-        for aluno in cls.__alunos:
+        for aluno in cls.objetos:
             if matricula == aluno.Get_Matricula() and id != aluno.Get_Id():
                 return False
         return True
 
     @classmethod
     def abrir(cls):
-        cls.__alunos = []
+        cls.objetos = []
         try:
             with open('alunos.json', mode='r') as arquivo:
                 alunos_json = json.load(arquivo)
@@ -109,11 +64,11 @@ class NAluno:
                                 obj['_Aluno__telefone'],
                                 obj['_Aluno__senha'],
                                 obj['_Aluno__idCurso'])
-                    cls.__alunos.append(aux)
+                    cls.objetos.append(aux)
         except FileNotFoundError:
             pass
 
     @classmethod
     def salvar(cls):
         with open('alunos.json', mode='w') as arquivo:
-            json.dump(cls.__alunos, arquivo, default=vars, indent=2)
+            json.dump(cls.objetos, arquivo, default=vars, indent=2)

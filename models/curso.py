@@ -1,4 +1,5 @@
 import json
+from models.modelo import Modelo
 
 class Curso:
     def __init__(self, id, nome, descricao, codigo, cargahoraria, idDepartamento):
@@ -32,69 +33,24 @@ class Curso:
         return f'{self.__id} - {self.__nome} - {self.__descricao} - {self.__codigo} - {self.__cargahoraria} - {self.__idDepartamento}'
     
 
-class NCurso:
-    __cursos = []
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        id = 0
-        for curso in cls.__cursos:
-            if curso.Get_Id() > id: id = curso.Get_Id()
-
-        obj.Set_Id(id + 1)
-        cls.__cursos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.__cursos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        for curso in cls.__cursos:
-            if curso.Get_Id() == id: return curso
-        return None
-    
-    @classmethod
-    def atualizar(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            aux.Set_Nome(obj.Get_Nome())
-            aux.Set_Descricao(obj.Get_Descricao())
-            aux.Set_Codigo(obj.Get_Codigo())
-            aux.Set_Cargahoraria(obj.Get_Cargahoraria())
-            aux.Set_IdDepartamento(obj.Get_IdDepartamento())
-            cls.salvar()
-
-    @classmethod
-    def excluir(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            cls.__cursos.remove(aux)
-            cls.salvar()
-
+class NCurso(Modelo):
     @classmethod
     def ver_codigo_ins(cls, codigo):
-        for curso in cls.__cursos:
+        for curso in cls.objetos:
             if codigo == curso.Get_Codigo():
                 return False
         return True
     
     @classmethod
     def ver_codigo_att(cls, id, codigo):
-        for curso in cls.__cursos:
+        for curso in cls.objetos:
             if codigo == curso.Get_Codigo() and id != curso.Get_Id():
                 return False
         return True
 
     @classmethod
     def abrir(cls):
-        cls.__cursos = []
+        cls.objetos = []
         try:
             with open('cursos.json', mode='r') as arquivo:
                 cursos_json = json.load(arquivo)
@@ -105,11 +61,11 @@ class NCurso:
                                 obj['_Curso__codigo'],
                                 obj['_Curso__cargahoraria'],
                                 obj['_Curso__idDepartamento'])
-                    cls.__cursos.append(aux)
+                    cls.objetos.append(aux)
         except FileNotFoundError:
             pass
 
     @classmethod
     def salvar(cls):
         with open('cursos.json', mode='w') as arquivo:
-            json.dump(cls.__cursos, arquivo, default=vars, indent=2)
+            json.dump(cls.objetos, arquivo, default=vars, indent=2)

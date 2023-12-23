@@ -1,4 +1,5 @@
 import json
+from models.modelo import Modelo
 
 class Departamento:
     def __init__(self, id, nome, descricao, idUniversidade):
@@ -25,53 +26,10 @@ class Departamento:
     def __str__(self):
         return f'{self.__id} - {self.__nome} - {self.__descricao} - {self.__idUniversidade}'
     
-class NDepartamento:
-    __departamentos = []
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        id = 0
-        for departamento in cls.__departamentos:
-            if departamento.Get_Id() > id: id = departamento.Get_Id()
-
-        obj.Set_Id(id + 1)
-        cls.__departamentos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.__departamentos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        for departamento in cls.__departamentos:
-            if departamento.Get_Id() == id: return departamento
-        return None
-    
-    @classmethod
-    def atualizar(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            aux.Set_Nome(obj.Get_Nome())
-            aux.Set_Descricao(obj.Get_Descricao())
-            aux.Set_IdUniversidade(obj.Get_IdUniversidade())
-            cls.salvar()
-
-    @classmethod
-    def excluir(cls, obj):
-        cls.abrir()
-        aux = cls.listar_id(obj.Get_Id())
-        if aux is not None:
-            cls.__departamentos.remove(aux)
-            cls.salvar()
-    
+class NDepartamento(Modelo):
     @classmethod
     def abrir(cls):
-        cls.__departamentos = []
+        cls.objetos = []
         try:
             with open('departamentos.json', mode='r') as arquivo:
                 departamentos_json = json.load(arquivo)
@@ -80,11 +38,11 @@ class NDepartamento:
                             obj['_Departamento__nome'], 
                             obj['_Departamento__descricao'],
                             obj['_Departamento__idUniversidade'])
-                    cls.__departamentos.append(aux)
+                    cls.objetos.append(aux)
         except FileNotFoundError:
             pass
 
     @classmethod
     def salvar(cls):
         with open('departamentos.json', mode='w') as arquivo:
-            json.dump(cls.__departamentos, arquivo, default=vars, indent=2)
+            json.dump(cls.objetos, arquivo, default=vars, indent=2)

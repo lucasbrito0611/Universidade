@@ -12,14 +12,12 @@ class View:
 
     def Aluno_Inserir(nome, matricula, email, telefone, senha, idCurso):
         if nome == '' or email == '' or telefone == '' or senha == '' or idCurso == '': raise ValueError('Preencha os valores vazios!')
-        if matricula <=0: raise ValueError('A matrícula deve ser maior que 0!')
         if NAluno.ver_matricula_ins(matricula) == False: raise ValueError('Matrícula já cadastrada!')
-        
+
         NAluno.inserir(Aluno(0, nome, matricula, email, telefone, senha, idCurso))
     
     def Aluno_Atualizar(id, nome, matricula, email, telefone, senha, idCurso):
         if nome == '' or matricula == '' or email == '' or telefone == '' or senha == '' or idCurso == '': raise ValueError('Preencha os valores vazios!')
-        if matricula <=0: raise ValueError('A matrícula deve ser maior que 0!')
         if NAluno.ver_matricula_att(id, matricula) == False: raise ValueError('Matrícula já cadastrada!')
 
         NAluno.atualizar(Aluno(id, nome, matricula, email, telefone, senha, idCurso))
